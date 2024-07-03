@@ -1,0 +1,26 @@
+.transcript-display {
+    max-height: 400px; 
+    overflow-y: auto; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    font-size: 16px; 
+    line-height: 1.5; 
+  }
+  
+  .transcript-text {
+    max-height: 500px;
+    overflow-y: scroll;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .word {
+    /* Style for non-highlighted words */
+  }
+  
+  .word.highlighted {
+    background-color: yellow; /* Adjust highlight style as needed */
+  }
+  
