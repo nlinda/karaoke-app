@@ -4,7 +4,12 @@ import './TranscriptDisplay.css';
 interface TranscriptDisplayProps {
   paragraphs: Paragraph[];
   words: Word[];
+  // isPlaying: boolean;
+  // currentTime: number;
+  // volume:number;
+  // playbackSpeed: number;
   audioRef: React.RefObject<HTMLVideoElement>;
+
 }
 
 interface Paragraph {
@@ -19,40 +24,28 @@ interface Word {
   duration: number;
   text: string;
   paragraph_id: string;
+  
 }
 
-const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ paragraphs, words, audioRef }) => {
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ audioRef, paragraphs, words }) => {
+  const [dummyState, setDummyState] = useState(false); // Dummy state to force re-render
 
   useEffect(() => {
     const handleTimeUpdate = () => {
-      if (audioRef.current) {
-        setCurrentTime(audioRef.current.currentTime);
-      }
-    };
-
-    const handlePlay = () => {
-      setIsPlaying(true);
-    };
-
-    const handlePause = () => {
-      setIsPlaying(false);
+      // Force re-render when currentTime changes
+      setDummyState(prev => !prev);
     };
 
     audioRef.current?.addEventListener('timeupdate', handleTimeUpdate);
-    audioRef.current?.addEventListener('play', handlePlay);
-    audioRef.current?.addEventListener('pause', handlePause);
 
     return () => {
       audioRef.current?.removeEventListener('timeupdate', handleTimeUpdate);
-      audioRef.current?.removeEventListener('play', handlePlay);
-      audioRef.current?.removeEventListener('pause', handlePause);
     };
   }, [audioRef]);
 
   const getHighlightedClass = (word: Word): string => {
-    if (isPlaying && currentTime >= word.time && currentTime <= word.time + word.duration) {
+    if(!audioRef?.current) return '';
+    if (!audioRef?.current?.paused &&  audioRef.current.currentTime >= word.time && audioRef.current.currentTime <= word.time + word.duration) {
         const element = document.getElementById(word.paragraph_id);
         element?.scrollIntoView();
       return 'highlighted';

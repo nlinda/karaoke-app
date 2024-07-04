@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./NavBar";
 import './Home.css';
 import ContentPage from "./ContentPage";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 
 const Home = () => {
@@ -16,13 +17,12 @@ const Home = () => {
 };
   return (
     <div className="home-page">
-            <Navbar handleSelectChange={handleTranscriptSelect}/>
-            <div className="content">
-              <div className="transcripts-list">
-               <ContentPage selectedTranscriptId={selectedTranscriptId}/>
-              </div>
-            </div>
+        <div className="content">
+          <div className="transcripts-list">
+            <Outlet/>
+          </div>
         </div>
+    </div>
   );
 }
  
