@@ -1,0 +1,68 @@
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .audio-element {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: white;
+  }
+  
+  .control-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;    
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .control-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .time-display {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+  }
+  
+  .seek-bar,
+  .volume-bar {
+    width: 100px;
+    margin: 0 10px;
+  }
+  
+  .volume-control {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .controls {
+      flex-direction: column;
+    }
+  
+    .control-button {
+      margin: 10px 0;
+    }
+  }
+  
