@@ -1,30 +1,31 @@
 import { Link } from 'react-router-dom';
-import useFetch from '../Effects/useFetch';
 import { Transcript } from '../Interfaces/Transcript';
+import { useQuery } from 'react-query';
+import { retrieveTranscriptList } from '../api/verbit-api';
 
 
   const VideoList: React.FC = () => {
-    const { data, isPending, errorMessage} = useFetch<Transcript[]>('https://verbit-karaoke-assignment.vercel.app/api/transcripts');
+    
+      const {
+        data,
+        error,
+        isLoading,
+      } = useQuery("transcriptData", retrieveTranscriptList);
 
+      if (isLoading) return <div>Fetching Transcripts...</div>;
+      if (error) return <div>An error occurred</div>;
     return ( 
         <div className="App">
         <h1>Karaoke App</h1>
-        {errorMessage ?? (
-          <p>{errorMessage}</p>
-        )}
-        {isPending ? (
-          <p>Loading transcripts...</p>
-        ) : (
+        {(
           <div className="transcript-list">
             <h2>Transcripts</h2>
             <ul>
               {data && data.map((transcript: Transcript )=> (
                 <div className="song-privew">
                   {/* <div className="song-card" onClick={() => handleSelectChange(transcript.id)}> */}
-                  <Link to={"/transcript/" + transcript.id}><p>{transcript.name}</p></Link>
-                  
-                  </div>
-                // </div>  
+                  <li key={transcript.id}><Link to={"/transcript/" + transcript.id}><p>{transcript.name}</p></Link></li>
+                </div>
               ))}
             </ul>
           </div>

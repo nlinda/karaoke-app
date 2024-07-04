@@ -22,7 +22,6 @@ The application is structured as follows:
 
 - **React with TypeScript:** Chosen for its strong typing system and component-based architecture, which enhances code organization and maintainability.
 - **Use of `<audio>` and `<video>` Elements:** Leveraged for the audio (video) player functionality due to their native support for media playback and built-in controls.
-- **Custom Hooks:** Used `useFetch` custom hook for data fetching to encapsulate API calls and manage loading states.
 - **CSS Modules:** Modular CSS approach to style components, ensuring encapsulation and ease of maintenance.
 
 ## Features Implemented
