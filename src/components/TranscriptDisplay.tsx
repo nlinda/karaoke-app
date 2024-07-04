@@ -64,7 +64,6 @@ const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ paragraphs, words
     <div className="transcript-display">
       {paragraphs.map(paragraph => (
         <div id={paragraph.id}>
-          {/* <p>{paragraph.time.toFixed(2)}s - {paragraph.duration.toFixed(2)}s</p> */}
           <div>
             {words
               .filter(word => word.paragraph_id === paragraph.id)

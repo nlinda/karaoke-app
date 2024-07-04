@@ -6,7 +6,6 @@ interface FetchState<T> {
     errorMessage: string | null;
 }
 function useFetch<T>(url:string): FetchState<T>  {
-// const useFetch = <T>(url: string): FetchState<T> => {
     const [data, setData] = useState<T | null>(null);
     const [isPending, setIsPending] = useState<boolean>(true);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);

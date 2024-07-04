@@ -1,12 +1,13 @@
-// src/components/Navbar.tsx
 import React from 'react';
-import TranscriptsList from './VideoList';
-// import { Link } from 'react-router-dom';
+import VideoList from './VideoList';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    handleSelectChange: (id: number) => void;
+}
+const Navbar: React.FC <NavbarProps>= ({handleSelectChange}) => {
     return (
         <div className="navbar">
-            <TranscriptsList/>
+            <VideoList handleSelectChange={handleSelectChange}/>
         </div>
     );
 }
