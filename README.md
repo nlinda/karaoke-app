@@ -1,4 +1,4 @@
-Karaoke App
+*Karaoke App*
 This project is a Karaoke-like web application that allows users to play audio (video) files with synchronized transcripts. It highlights the current spoken word and provides playback controls.
 
 Structure
