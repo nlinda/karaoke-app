@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+Karaoke App
+This project is a Karaoke-like web application that allows users to play audio (video) files with synchronized transcripts. It highlights the current spoken word and provides playback controls.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Structure
+The application is structured as follows:
 
-## Available Scripts
+Components:
 
-In the project directory, you can run:
+Navbar: Displays a list of available transcripts fetched from the API and allows selection of a transcript.
+ContentPage: Displays the selected transcript with an audio (video) player and highlights the current word being spoken.
+AudioPlayer: Manages playback of audio (video) files, including play, pause, seek, and playback speed controls.
+TranscriptDisplay: Displays paragraphs of text with words highlighted as they are spoken.
+VideoList: Lists available transcripts fetched from the API.
+API Integration:
 
-### `npm start`
+Utilizes endpoints from https://verbit-karaoke-assignment.vercel.app/api/ to fetch transcript details and media files.
+Supports fetching transcripts list, fetching a transcript by ID, and fetching a random transcript.
+Technical Choices
+React with TypeScript: Chosen for its strong typing system and component-based architecture, which enhances code organization and maintainability.
+Use of <video> Elements: Leveraged for the video player functionality due to their native support for media playback and built-in controls.
+Custom Hooks: Used useFetch custom hook for data fetching to encapsulate API calls and manage loading states.
+CSS Modules: Modular CSS approach to style components, ensuring encapsulation and ease of maintenance.
+Features Implemented
+Displaying transcript paragraphs with highlighted words synchronized to audio (video) playback.
+Fetching and displaying a list of available transcripts.
+Playback controls including play, pause, seek, and playback speed adjustments.
+Automatic Scrolling: implemented automatic scrolling to keep the current word in view during playback. This would improve user experience and readability.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Not Implemented & Trade-offs
+Responsive Design: Basic responsiveness is implemented, but further enhancements could ensure optimal viewing on various devices and screen sizes.
+Error Handling: Basic error handling is in place, but robust error handling and retry mechanisms could be implemented for better reliability.
+Future Improvements
+Enhanced Playback Controls: Add volume control, full-screen mode, and subtitle toggling options for a more comprehensive user experience.
+User Authentication: Implement user authentication to allow saving favorite transcripts or tracking playback progress.
+Performance Optimization: Optimize media loading and processing for smoother playback and reduced latency.
+Setup Instructions
+To run the project locally:
 
-### `npm test`
+Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+git clone <repository-url>
+cd karaoke-app
+Install dependencies:
 
-### `npm run build`
+bash
+Copy code
+npm install
+Start the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copy code
+npm start
+Open your browser and visit http://localhost:3000 to view the app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
