@@ -29,7 +29,7 @@ The application is structured as follows:
 
 - Displaying transcript paragraphs with highlighted words synchronized to audio (video) playback.
 - Fetching and displaying a list of available transcripts.
-- Playback controls including play, pause, seek, and playback speed adjustments.
+- Playback controls including play, pause, seek, volume control, full-screen mode and playback speed adjustments.
 - Automatic Scrolling: Implemented automatic scrolling to keep the current word in view during playback. This would improve user experience and readability.
 
 ## Not Implemented & Trade-offs
@@ -39,7 +39,7 @@ The application is structured as follows:
 
 ## Future Improvements
 
-- **Enhanced Playback Controls:** Add volume control, full-screen mode, and subtitle toggling options for a more comprehensive user experience.
+- **Enhanced Playback Controls:**  subtitle toggling options for a more comprehensive user experience.
 - **User Authentication:** Implement user authentication to allow saving favorite transcripts or tracking playback progress.
 - **Performance Optimization:** Optimize media loading and processing for smoother playback and reduced latency.
 
