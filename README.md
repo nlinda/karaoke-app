@@ -37,7 +37,7 @@ The application is structured as follows:
 - **Error Handling:** Basic error handling is in place, but robust error handling and retry mechanisms could be implemented for better reliability.
 
 ## Future Improvements
-
+- **Implement Styled components:** for strong typing, and flexibility.
 - **Enhanced Playback Controls:**  subtitle toggling options for a more comprehensive user experience.
 - **User Authentication:** Implement user authentication to allow saving favorite transcripts or tracking playback progress.
 - **Performance Optimization:** Optimize media loading and processing for smoother playback and reduced latency.
