@@ -24,9 +24,9 @@ import ErrorPage from './ErrorPage';
             <h2>Transcripts</h2>
             <ul>
               {data && data.map((transcript: Transcript )=> (
-                <div className="song-privew">
+                <div key={transcript.id} className="song-privew">
                   {/* <div className="song-card" onClick={() => handleSelectChange(transcript.id)}> */}
-                  <li key={transcript.id}><Link to={"/transcript/" + transcript.id}><p>{transcript.name}</p></Link></li>
+                  <li><Link to={"/transcript/" + transcript.id}><p>{transcript.name}</p></Link></li>
                 </div>
               ))}
             </ul>

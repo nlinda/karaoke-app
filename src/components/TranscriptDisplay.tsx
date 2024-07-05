@@ -1,30 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './TranscriptDisplay.css';
+import { Word } from '../Interfaces/Word';
+import { Paragraph } from '../Interfaces/Paragraph';
+
 
 interface TranscriptDisplayProps {
   paragraphs: Paragraph[];
   words: Word[];
-  // isPlaying: boolean;
-  // currentTime: number;
-  // volume:number;
-  // playbackSpeed: number;
   audioRef: React.RefObject<HTMLVideoElement>;
-
-}
-
-interface Paragraph {
-  id: string; 
-  time: number;
-  duration: number;
-  speaker_id: string;
-}
-
-interface Word {
-  time: number;
-  duration: number;
-  text: string;
-  paragraph_id: string;
-  
 }
 
 const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ audioRef, paragraphs, words }) => {
@@ -41,7 +24,7 @@ const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ audioRef, paragra
     return () => {
       audioRef.current?.removeEventListener('timeupdate', handleTimeUpdate);
     };
-  }, [audioRef]);
+  }, [ audioRef]);
 
   const getHighlightedClass = (word: Word): string => {
     if(!audioRef?.current) return '';
@@ -56,12 +39,12 @@ const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({ audioRef, paragra
   return (
     <div className="transcript-display">
       {paragraphs.map(paragraph => (
-        <div id={paragraph.id}>
+        <div id={paragraph.id} key={`para_${paragraph.id}`}>
           <div>
             {words
               .filter(word => word.paragraph_id === paragraph.id)
-              .map((word, index) => (
-                <span key={index} className={`word ${getHighlightedClass(word)}`}>
+              .map((word, id) => (
+                <span key={id} className={`word ${getHighlightedClass(word)}`}>
                   {word.text}{' '}
                 </span>
               ))}
