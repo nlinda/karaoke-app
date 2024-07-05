@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Transcript } from '../Interfaces/Transcript';
 import { useQuery } from 'react-query';
 import { retrieveTranscriptList } from '../api/verbit-api';
+import ErrorPage from './ErrorPage';
 
 
   const VideoList: React.FC = () => {
@@ -11,9 +12,10 @@ import { retrieveTranscriptList } from '../api/verbit-api';
         error,
         isLoading,
       } = useQuery("transcriptData", retrieveTranscriptList);
-
+      
+      if (error) return <ErrorPage message={JSON.stringify(error)}/>;   
       if (isLoading) return <div>Fetching Transcripts...</div>;
-      if (error) return <div>An error occurred</div>;
+     
     return ( 
         <div className="App">
         <h1>Karaoke App</h1>

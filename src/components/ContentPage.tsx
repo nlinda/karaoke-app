@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { retrieveTranscriptById } from '../api/verbit-api';
 import './ContentPage.css'
+import ErrorPage from './ErrorPage';
 
 export interface RouteParams {
     selectedTranscriptId: string; 
@@ -14,7 +15,6 @@ export interface RouteParams {
 const ContentPage: React.FC = () => {
     const { selectedTranscriptId } = useParams(); 
     const [selectedTranscript, setSelectedTranscript] = useState<Transcript | null>(null);
-    
 
     const audioRef = useRef<HTMLVideoElement>(null); // Ref for the <audio> element
      // Query using react-query
@@ -29,11 +29,10 @@ const ContentPage: React.FC = () => {
             // Additional logic as needed
           }
     }, [data]);
-    if (isLoading) return <div>Fetching Transcript details...</div>;
-    if (error) {
-        // Option 1: Basic error message handling
-        return <div>'An error occurred'</div>;
-      }
+    
+    if (error) return <ErrorPage message={JSON.stringify(error)}/>;
+    
+    if (isLoading && !error) return <div>Fetching Transcript details...</div>;
     return (
         <div>
             {selectedTranscript && (
